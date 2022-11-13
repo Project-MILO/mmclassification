@@ -1,12 +1,20 @@
 import os
 import json
+import argparse
 
-os.makedirs(os.path.join(os.getcwd(), 'data/liveness_1fps/meta'))
-os.makedirs(os.path.join(os.getcwd(), 'data/liveness_1fps/train'))
-os.makedirs(os.path.join(os.getcwd(), 'data/liveness_1fps/val'))
-os.makedirs(os.path.join(os.getcwd(), 'data/liveness_1fps/test'))
+parser = argparse.ArgumentParser()
+parser.add_argument('dir', metavar='dir', type=str,
+                    help='enter directory containing data')
 
-f = open('/home/kiennt54/data/milo/liveness/train_images_1fps/val/annotations/instances_default.json')
+args = parser.parse_args()
+
+os.makedirs(os.path.join(os.getcwd(), 'data/liveness_1fps/meta'), exist_ok=True)
+os.makedirs(os.path.join(
+    os.getcwd(), 'data/liveness_1fps/train'), exist_ok=True)
+os.makedirs(os.path.join(os.getcwd(), 'data/liveness_1fps/val'), exist_ok=True)
+os.makedirs(os.path.join(os.getcwd(), 'data/liveness_1fps/test'), exist_ok=True)
+
+f = open(os.path.join(args.dir, 'val/annotations/instances_default.json'))
 
 data = json.load(f)
 
@@ -22,7 +30,7 @@ with open(os.path.join(os.getcwd(), 'data/liveness_1fps/meta/val.txt'), 'w') as 
 anno_txt.close()
 f.close()
 
-f = open('/home/kiennt54/data/milo/liveness/train_images_1fps/train/annotations/instances_default.json')
+f = open(os.path.join(args.dir, 'train/annotations/instances_default.json'))
 
 data = json.load(f)
 
