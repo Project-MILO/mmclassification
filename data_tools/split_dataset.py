@@ -15,7 +15,7 @@ args = parser.parse_args()
 
 os.makedirs(os.path.join(os.getcwd(), args.dir, 'val'), exist_ok=True)
 
-df = pd.read_csv('/home/kiennt54/splited_label.csv')
+df = pd.read_csv(os.path.join(args.dir, 'splited_label.csv'))
 
 for row in df.itertuples():
     if row.split == 'val':
