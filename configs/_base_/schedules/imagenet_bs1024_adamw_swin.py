@@ -21,7 +21,7 @@ optimizer_config = dict(grad_clip=dict(max_norm=5.0))
 lr_config = dict(
     policy='CosineAnnealing',
     by_epoch=False,
-    min_lr_ratio=1e-2,
+    # min_lr_ratio=1e-2,
     warmup='linear',
     warmup_ratio=1e-3,
     warmup_iters=20,
